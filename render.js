@@ -71,6 +71,7 @@ function main() {
         gl.drawArrays(gl.TRIANGLES,
             0,  /* starting index in the array */
             vertices.length/2); /* number of vertices to draw */
+        vertices = [];
     };
 
     // Load the shader pair. 2nd arg is vertex shader, 3rd arg is fragment shader
