@@ -11,13 +11,19 @@ function main() {
     let pointC = [-.05,  0.7];
     let vertices = [];
 
-    let needThreePoints = true;
+    let needThreePoints = false;
     canvas.addEventListener('click', event => {
         if (needThreePoints){
             let x = 2 * event.offsetX / canvas.width - 1;
             let y = -1 + 2 * (canvas.height - event.offsetY) / canvas.height;
 
             vertices.push(x, y);
+
+            if (vertices.length > 5){
+                //TODO: clear canvas, make the new triangle redraw
+                needThreePoints = false;
+                updateCanvas(program);
+            }
         }
     });
 
@@ -25,6 +31,7 @@ function main() {
     chooseButton.addEventListener('click', event => {
         //context.clearRect(0, 0, canvas.width, canvas.height);
         vertices = [];
+        needThreePoints = true;
         });
 
     const depthSlider = document.getElementById("depth");
